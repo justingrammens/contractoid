@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Contractoid</string>
+    <string name="start">it\'s starting</string>
+    <string name="stop">phew! it\'s over</string>
+
+    <string name="clear">reset</string>
+    <string name="clearlist">clear list</string>
+    <string name="save">track it</string>
+    <string name="results">Timings</string>
+</resources>
