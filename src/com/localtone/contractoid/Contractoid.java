@@ -38,6 +38,7 @@ public class Contractoid extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        // get the buttons and other components from the main.xml file.
         startButton = (Button) findViewById(R.id.startstop);
         clearButton = (Button) findViewById(R.id.clear);
         clearListButton = (Button) findViewById(R.id.clearlist);
@@ -45,7 +46,7 @@ public class Contractoid extends Activity {
         stopWatch = new StopWatch();
         time = (TextView) findViewById(R.id.time);
         
-        ListView list = (ListView) findViewById(android.R.id.list); // SHOW THIS IN THE PRESENTATION HOW TO MAPS TO NAMESPACE
+        ListView list = (ListView) findViewById(android.R.id.list); // stards with "android" - maps to a "standard" id list type
         
         timeListAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, timeList);
@@ -66,6 +67,11 @@ public class Contractoid extends Activity {
         
 	}
     
+    /**
+     * Utility method to set the time as string with the hours/minutes/seconds.
+     * @param milliSecs the time.
+     * @return the time formatted.
+     */
     public static String timeAsString(long milliSecs) {
         String s = "";
         int hours = (int) (milliSecs % (1000 * 60 * 60 * 24)) / 3600000;
@@ -82,7 +88,9 @@ public class Contractoid extends Activity {
         return s;
       }
 
-
+	/**
+	 * Is sent messages every 100 ms to handle setting the time.
+	 */
 	private Handler mHandler = new Handler() {
 		 public void handleMessage(Message msg) {
 		    switch (msg.what) {
@@ -96,9 +104,11 @@ public class Contractoid extends Activity {
 		}
 	};
 	
-	
-	private OnClickListener ocl = new OnClickListener(){
 
+	/**
+	 * Listener class to handle the button selection.
+	 */
+	private OnClickListener ocl = new OnClickListener(){
 		public void onClick(View v) {
 			Button button = (Button) v;
 			String action = button.getText().toString();
